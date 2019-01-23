@@ -22,6 +22,7 @@
                 android:id="@+id/fragment_conversation_et_message"
                 android:layout_width="match_parent"
                 android:layout_centerVertical="true"
+                android:inputType="textCapSentences"
                 android:layout_toLeftOf="@+id/fragment_conversation_button_send_message"
                 android:layout_height="wrap_content"/>
 

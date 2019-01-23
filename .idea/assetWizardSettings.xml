@@ -28,9 +28,13 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="bb4767" />
-                            <entry key="outputName" value="ic_send_accent_24dp" />
-                            <entry key="sourceFile" value="$USER_HOME$" />
+                            <entry key="height" value="867" />
+                            <entry key="outputName" value="ic_home_background" />
+                            <entry key="overrideSize" value="true" />
+                            <entry key="sourceFile" value="$USER_HOME$/Downloads/undraw_missed_chances_k3cq.svg" />
+                            <entry key="width" value="1143" />
                           </map>
                         </option>
                       </PersistentState>

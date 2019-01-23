@@ -43,6 +43,8 @@ class HomeActivity : NearbyBaseActivity(), ConversationFragment.ConversationList
 
         startAdvertising()
         startDiscovery()
+
+        showStatus(getString(R.string.searching_people))
     }
 
     private fun configView(){
@@ -91,7 +93,8 @@ class HomeActivity : NearbyBaseActivity(), ConversationFragment.ConversationList
      * CONNECT WITH
      */
     fun connectWith(endpointInfo: EndPointInfo) {
-        activity_home_tv_status.text = "${getString(R.string.connect_with)} ${endpointInfo.discoveredEndpointInfo.endpointName}..."
+        showStatus("${getString(R.string.connect_with)} ${endpointInfo.discoveredEndpointInfo.endpointName}...")
+
         connectionsClient?.requestConnection(codeName, endpointInfo.endPointId, connectionLifecycleCallback)
     }
 
@@ -180,6 +183,13 @@ class HomeActivity : NearbyBaseActivity(), ConversationFragment.ConversationList
     private fun removeEndPointFromRV(endpointId: String) {
         mRvAdapter?.removeEndPoint(endpointId)
         mRvAdapter?.notifyDataSetChanged()
+    }
+
+    /**
+     * STATUS
+     */
+    private fun showStatus(message: String) {
+        activity_home_tv_status.text = message
     }
 
     /**

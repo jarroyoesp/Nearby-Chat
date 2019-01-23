@@ -36,6 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/item_rv_end_point_tv_name"
                 android:layout_marginTop="5dp"
+                android:visibility="gone"
                 android:gravity="right"
                 android:textColor="@color/gray"/>
 
