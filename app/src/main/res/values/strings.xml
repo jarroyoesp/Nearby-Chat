@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">NearbyChat</string>
+    <string name="error_missing_permissions">Without this permissions the app cant run. Bye!</string>
+    <string name="find_people_around">Find People Around</string>
+    <string name="connect_with">Connecting with</string>
+    <string name="connected">Connected</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

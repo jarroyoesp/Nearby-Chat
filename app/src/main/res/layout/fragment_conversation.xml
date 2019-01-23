@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:padding="@dimen/general_padding"
+                tools:context=".conversation.ConversationFragment">
+
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/fragment_conversation_rv"
+            android:layout_width="match_parent"
+            android:layout_above="@+id/fragment_conversation_layout_send"
+            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+
+    <RelativeLayout
+            android:id="@+id/fragment_conversation_layout_send"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_height="wrap_content">
+        <EditText
+                android:id="@+id/fragment_conversation_et_message"
+                android:layout_width="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/fragment_conversation_button_send_message"
+                android:layout_height="wrap_content"/>
+
+        <ImageButton
+                android:id="@+id/fragment_conversation_button_send_message"
+                android:layout_width="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_send_accent_24dp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
