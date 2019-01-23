@@ -14,7 +14,7 @@
             android:alpha="0.5"
             android:src="@drawable/ic_home_background"/>
 
-    <LinearLayout
+    <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="@dimen/general_padding"
@@ -35,10 +35,12 @@
                 android:layout_height="wrap_content"/>
 
         <TextView
+                android:id="@+id/activity_home_tv_rv_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
+                android:layout_below="@+id/activity_home_tv_status"
                 android:textStyle="bold"
                 android:layout_marginTop="@dimen/general_padding"
                 android:text="Click and talk with people around you:"/>
@@ -46,9 +48,17 @@
         <android.support.v7.widget.RecyclerView
                 android:id="@+id/activity_home_rv_end_point"
                 android:layout_width="match_parent"
-                android:layout_below="@+id/activity_home_tv_status"
+                android:layout_above="@+id/activity_home_bt_finish_communication"
+                android:layout_below="@+id/activity_home_tv_rv_title"
                 android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
-    </LinearLayout>
+        <Button
+                android:id="@+id/activity_home_bt_finish_communication"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="@string/finish_communication"/>
+
+    </RelativeLayout>
 
 
 </RelativeLayout>

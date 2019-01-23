@@ -3,6 +3,7 @@ package es.jarroyo.nearbychat.home
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.widget.Toast
 import com.google.android.gms.nearby.Nearby
 import com.google.android.gms.nearby.connection.*
 import es.jarroyo.nearbychat.CodenameGenerator
@@ -51,6 +52,11 @@ class HomeActivity : NearbyBaseActivity(), ConversationFragment.ConversationList
         activity_home_tv_name.text = "You are $codeName"
 
         configRecyclerView()
+
+        activity_home_bt_finish_communication.setOnClickListener{
+            //connectionsClient?.stopAllEndpoints()
+            finish()
+        }
     }
 
     /**
@@ -100,13 +106,15 @@ class HomeActivity : NearbyBaseActivity(), ConversationFragment.ConversationList
 
     // Callbacks for connections to other devices
     private val connectionLifecycleCallback = object : ConnectionLifecycleCallback() {
+
+        var endPointName: String = ""
+
         override fun onConnectionInitiated(endpointId: String, connectionInfo: ConnectionInfo) {
             Log.i(TAG, "onConnectionInitiated: accepting connection")
 
             activity_home_tv_status.text = "${getString(R.string.connect_with)} ${connectionInfo.endpointName}..."
             connectionsClient?.acceptConnection(endpointId, payloadCallback)
-            /*opponentName = connectionInfo.endpointName
-            connectWith.setVisibility(View.GONE)*/
+            endPointName = connectionInfo.endpointName
         }
 
         override fun onConnectionResult(endpointId: String, result: ConnectionResolution) {
@@ -127,10 +135,7 @@ class HomeActivity : NearbyBaseActivity(), ConversationFragment.ConversationList
         }
 
         override fun onDisconnected(endpointId: String) {
-            Log.i(TAG, "onDisconnected: disconnected from the opponent")
-            //resetGame()
-
-            removeEndPointFromRV(endpointId)
+            hideConversation(endpointId, endPointName)
         }
     }
 
@@ -191,9 +196,7 @@ class HomeActivity : NearbyBaseActivity(), ConversationFragment.ConversationList
         activity_home_tv_status.text = message
     }
 
-    private fun addConversationFragment() {
 
-    }
     /**
      * CONVERSATION
      */
@@ -208,6 +211,18 @@ class HomeActivity : NearbyBaseActivity(), ConversationFragment.ConversationList
         val ft = supportFragmentManager?.beginTransaction()
         ft?.addToBackStack(ConversationFragment::class.java.simpleName)
         ft?.replace(R.id.activity_home_layout_main, conversationFragment)?.commit()
+    }
+
+    fun hideConversation(endPointId: String, endPointName: String) {
+        Log.i(TAG, "onDisconnected: disconnected from the opponent")
+        removeConverastionFragment()
+        connectionsClient?.disconnectFromEndpoint(endPointId)
+        Toast.makeText(this, "The user ${endPointName} has been disconnected", Toast.LENGTH_SHORT).show()
+    }
+
+    fun removeConverastionFragment() {
+        val ft = supportFragmentManager
+        ft?.popBackStack()
     }
 
     override fun onSendMessage(endPointId: String, message: String) {
