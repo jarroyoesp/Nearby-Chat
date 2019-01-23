@@ -13,6 +13,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:src="@drawable/ic_account_gray_24dp"
+            android:tint="@color/colorAccent"
             android:layout_marginLeft="@dimen/general_padding"/>
 
     <RelativeLayout

@@ -2,14 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                android:padding="@dimen/general_padding"
+                android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:background="@drawable/bg_chat"
                 tools:context=".conversation.ConversationFragment">
 
     <android.support.v7.widget.RecyclerView
             android:id="@+id/fragment_conversation_rv"
             android:layout_width="match_parent"
+            android:padding="@dimen/general_padding"
             android:layout_above="@+id/fragment_conversation_layout_send"
             android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
 
@@ -17,22 +17,27 @@
             android:id="@+id/fragment_conversation_layout_send"
             android:layout_width="match_parent"
             android:layout_alignParentBottom="true"
-            android:layout_height="wrap_content">
+            android:layout_margin="@dimen/general_padding"
+            android:layout_height="50dp">
         <EditText
                 android:id="@+id/fragment_conversation_et_message"
                 android:layout_width="match_parent"
                 android:layout_centerVertical="true"
+                android:padding="15dp"
+                android:hint="Type your message"
                 android:inputType="textCapSentences"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/bg_edittext_message"
                 android:layout_toLeftOf="@+id/fragment_conversation_button_send_message"
-                android:layout_height="wrap_content"/>
+                android:layout_height="match_parent"/>
 
-        <ImageButton
+        <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fragment_conversation_button_send_message"
                 android:layout_width="wrap_content"
-                android:layout_centerVertical="true"
+                android:elevation="1dp"
                 android:layout_alignParentRight="true"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_send_accent_24dp"/>
+                android:foregroundGravity="center"
+                android:layout_height="wrap_content"/>
 
     </RelativeLayout>
 

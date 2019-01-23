@@ -120,8 +120,7 @@ class HomeActivity : NearbyBaseActivity(), ConversationFragment.ConversationList
                 setOpponentName(opponentName)
                 setStatusText(getString(R.string.status_connected))
                 setButtonState(true)*/
-                activity_home_tv_status.text = "${getString(R.string.connected)}"
-                addConversationFragment(endpointId)
+                showConversation(endpointId, result)
             } else {
                 Log.i(TAG, "onConnectionResult: connection failed")
             }
@@ -192,9 +191,18 @@ class HomeActivity : NearbyBaseActivity(), ConversationFragment.ConversationList
         activity_home_tv_status.text = message
     }
 
+    private fun addConversationFragment() {
+
+    }
     /**
      * CONVERSATION
      */
+    fun showConversation(endPointId: String, result: ConnectionResolution) {
+        supportActionBar?.title = mRvAdapter?.getEndPoint(endPointId)?.discoveredEndpointInfo?.endpointName
+        activity_home_tv_status.text = "${getString(R.string.connected)}"
+        addConversationFragment(endPointId)
+    }
+
     fun addConversationFragment(endPointId: String) {
         conversationFragment = ConversationFragment.newInstance(endPointId)
         val ft = supportFragmentManager?.beginTransaction()

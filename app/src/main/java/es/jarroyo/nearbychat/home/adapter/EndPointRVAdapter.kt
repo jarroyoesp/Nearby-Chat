@@ -41,5 +41,10 @@ class EndPointRVAdapter(private var mEndpointInfoList: MutableList<EndPointInfo>
         }
     }
 
+    fun getEndPoint(endPointId: String): EndPointInfo? {
+        val endPointInfo = mEndpointInfoList.find { endPointInfo -> endPointInfo.endPointId == endPointId }
+        return endPointInfo
+    }
+
     data class ItemEndPoint(val position: Int, val endPoint: EndPointInfo)
 }
